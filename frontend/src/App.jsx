@@ -33,6 +33,8 @@ export default function App(){
 
   let update = (e) =>{
     e.preventDefault();
+    let parameters = "?name="+name+"&ward="+ward+"&verified="+verified+"&scanned="+scanned+"&upload="+uploaded+"&comments="+comments;
+    console.log(parameters)
 
     setName('');
     setWard('Ngariama')
@@ -42,8 +44,6 @@ export default function App(){
     setUploaded('')
     setComments('')
 
-    let parameters = "?name="+name+"&ward="+ward+"&verified="+verified+"&scanned="+scanned+"&upload="+uploaded+"&comments="+comments;
-    console.log(parameters)
     fetch(baseURL + "/update" + parameters).then((response) => response.json())
     .then((data) => {
       console.log(data);
