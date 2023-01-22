@@ -48,3 +48,6 @@ def update():
     cur.execute(f"INSERT INTO Progress (name, ward, verified, scanned,uploads,comments) VALUES ('{data.get('name')}','{data.get('ward')}','{data.get('verified')}','{data.get('scanned')}','{data.get('upload')}','{data.get('comments')}')")
     con.commit()
     return {"ACK":"OK"}
+
+if __name__ == '__main__':
+    app.run(debug=True, port=os.getenv("PORT", default=5000),host='0.0.0.0')
