@@ -1,11 +1,65 @@
-@import url('https://fonts.cdnfonts.com/css/seven-segment');
-#dateTime{
-  font-family: 'Seven Segment', sans-serif;
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-form{
-  margin: 0 auto;
+
+/* Dark mode styles */
+.dark-mode {
+    --bg-color: #333;
+    --text-color: #fff;
+    --form-bg-color: #444;
+    --form-text-color: #ccc;
 }
-input,select{
-  display: block;
-  margin: 1% 0%;
+
+/* Light mode styles */
+.light-mode {
+    --bg-color: #fff;
+    --text-color: #333;
+    --form-bg-color: #f2f2f2;
+    --form-text-color: #333;
+}
+
+/* Form styles */
+form {
+    background-color: var(--form-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    color: var(--form-text-color);
+    background-color: var(--form-bg-color);
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Header styles */
+h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin: 20px 0;
+}
+
+/* Date styles */
+#dateTime {
+    text-align: right;
+    color: var(--text-color);
+    font-size: 0.8em;
+    margin: 10px 0;
 }
