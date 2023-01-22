@@ -5,7 +5,7 @@
 form{
   margin: 0 auto;
 }
-input{
+input,select{
   display: block;
   margin: 1% 0%;
 }
