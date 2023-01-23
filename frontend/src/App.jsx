@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
-import {baseURL} from './data.json'
 import './App.css'
+
+let baseURL ="https://web-production-6686b.up.railway.app"
 
 export default function App(){
   let [name,setName] = useState('Faith Mugera');
