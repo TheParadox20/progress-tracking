@@ -75,7 +75,7 @@ export default function App(){
               )
             }
         </select>
-        <select value={subC} onChange={event =>{setSubc(event.target.value)}} >
+        <select value={subC} onChange={event =>{setSubc(event.target.value);setWard(choices[choices[0].indexOf(event.target.value)+1][0])}} >
             {
               choices[0].map(
                 i=>(
@@ -118,7 +118,7 @@ export default function App(){
           {report.map(
             i=>(
               <tr>
-                <td>{i.name}</td>
+                <td id='name'>{i.name}</td>
                 <td>{i.verified}</td>
                 <td>{i.scanned}</td>
                 <td>{i.uploaded}</td>
@@ -131,11 +131,11 @@ export default function App(){
       <div className='overlay' id='verify'>
         <div className='content'>
           <h4>Confirm Details</h4>
+          <p>Name {name}</p>
           <p>Ward {ward}</p>
           <p>Documents verified {verified}</p>
           <p>Documents scanned {scanned}</p>
           <p>Documents uploaded {uploaded}</p>
-          <p>Name {name}</p>
           <button onClick={(e)=>document.getElementById('verify').style.visibility = 'hidden'}>Cancel</button>
           <button onClick={(e)=>{update(e);}}>Submit</button>
         </div>

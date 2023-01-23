@@ -68,7 +68,7 @@ h2 {
     font-size: 0.8em;
     margin: 10px 0;
 }
-/* overlay */
+/* overlay & verification */
 .overlay{
     background-color: #000;
     height: 100%;
@@ -91,4 +91,13 @@ h2 {
     max-height: 70vh;
     overflow-y: scroll;
     box-shadow: 10 14px 18px 10 rgba(10,10,0,110.2);
+}
+/* table */
+table {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+}
+#name{
+    text-align: left;
 }
