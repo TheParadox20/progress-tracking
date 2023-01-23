@@ -24,12 +24,13 @@ def test():
 
 @app.route("/retrive")
 def retrive():
+    data = request.args
     report = []
-    wards = cur.execute(f"SELECT DISTINCT ward from Progress").fetchall()
+    wards = cur.execute(f"SELECT DISTINCT {data.get('filter')} from Progress").fetchall()
     # wards = cur.execute(f"SELECT DISTINCT ward from Progress").fetchall()[0][0].split(',')
     for ward in wards:
         verified,scanned,uploaded = 0,0,0
-        for update in cur.execute(f"SELECT verified,scanned,uploads FROM Progress WHERE ward=='{ward[0]}'"):
+        for update in cur.execute(f"SELECT verified,scanned,uploads FROM Progress WHERE {data.get('filter')}=='{ward[0]}'"):
             uploaded+=update[2]
             scanned+=update[1]
             verified+=update[0]
