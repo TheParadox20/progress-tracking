@@ -4,7 +4,7 @@ import './App.css'
 let baseURL ="https://web-production-6686b.up.railway.app"
 
 export default function App(){
-  let [name,setName] = useState('Faith Mugera');
+  let [name,setName] = useState('Brian Muita');
   let [ward,setWard] = useState('Ngariama');
   let [subC,setSubc] = useState('Kirinyaga East');
   let [verified,setVerified] = useState('');
@@ -14,8 +14,8 @@ export default function App(){
   let [filter,setFilter] = useState('name');
   let [report, setReport] = useState([{'name':'alpha','verified':'0','scanned':'0','uploaded':'0'}]);
 
-  let retrive = ()=>{
-    fetch(baseURL + "/retrive?filter="+filter).then((response) => response.json())
+  let retrive = (choice)=>{
+    fetch(baseURL + "/retrive?filter="+choice).then((response) => response.json())
     .then((data) => {
       setReport(data.report)
     })
@@ -23,7 +23,7 @@ export default function App(){
     console.log(filter)
   }
   useEffect(()=>{
-    retrive();
+    retrive(filter);
   },[])
 
   let date = new Date()
@@ -36,7 +36,7 @@ export default function App(){
     ['Nyangati','Murinduko','Gathigiriri','Tebere '],
     ['Kerugoya','Kanyekiine','Mutira','Inoi']
   ];
-  let names = ['Faith Mugera','Dorcas Kahiga','Samuel Njenga','Kefa Mugambi','Stephen Kiarie','Brian Muita','Tumaini Kimathi','Rodgers Ngunjiri']
+  let names = ['Faith Mugera','Dorcas Kahiga','Samuel Njenga','Kefa Mugambi','Stephen Kiarie','Brian Muita','Tumaini Kimathi','Rodgers Ngunjiri','George Mwangi','Dickson Muraya'].sort()
 
   let update = (e) =>{
     e.preventDefault();
@@ -104,7 +104,7 @@ export default function App(){
         <thead>
           <tr>
             <th>
-              <select value={filter} onChange={event =>{retrive();setFilter(event.target.value)}} >
+              <select value={filter} onChange={event =>{retrive(event.target.value);setFilter(event.target.value)}} >
                 <option value="name">Name</option>
                 <option value="ward">Ward</option>
               </select>
