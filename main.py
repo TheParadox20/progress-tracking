@@ -27,7 +27,6 @@ def retrive():
     data = request.args
     report = []
     wards = cur.execute(f"SELECT DISTINCT {data.get('filter')} from Progress").fetchall()
-    # wards = cur.execute(f"SELECT DISTINCT ward from Progress").fetchall()[0][0].split(',')
     for ward in wards:
         verified,scanned,uploaded = 0,0,0
         for update in cur.execute(f"SELECT verified,scanned,uploads FROM Progress WHERE {data.get('filter')}=='{ward[0]}'"):
@@ -50,5 +49,11 @@ def update():
     con.commit()
     return {"ACK":"OK"}
 
+@app.route("/delete")
+def delete():
+    data = request.args
+    cur.execute(f"DELETE FROM Progress WHERE {data.get('condition')}='{data.get('value')}'")
+    con.commit()
+    return {"ACK":"OK"}
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000),host='0.0.0.0')
