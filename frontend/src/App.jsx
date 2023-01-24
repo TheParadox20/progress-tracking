@@ -140,6 +140,7 @@ export default function App(){
           <button onClick={(e)=>{update(e);}}>Submit</button>
         </div>
       </div>
+      <br />
       <button onClick={(e)=>{
         fetch(baseURL+'/download/report.csv')
         .then(response => response.blob())
