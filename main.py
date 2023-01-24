@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory, request
+from flask import Flask, send_from_directory, request, send_file,make_response
 from flask_cors import CORS
 import sqlite3
 
@@ -55,5 +55,21 @@ def delete():
     cur.execute(f"DELETE FROM Progress WHERE {data.get('condition')}='{data.get('value')}'")
     con.commit()
     return {"ACK":"OK"}
+def tocsv():
+    f = open('report.csv','w')
+    for row in cur.execute("SELECT * FROM Progress"):
+        for column in row:
+            f.write(str(column) if type(column)!='str' else column)
+            f.write(',')
+        f.write('\n')
+
+@app.route("/download/<file_name>")
+def getFile(file_name):
+    tocsv()
+    headers = {"Content-Disposition": "attachment; filename=%s" % file_name}
+    with open(file_name, 'r') as f:
+        body = f.read()
+    return make_response((body, headers))
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000),host='0.0.0.0')

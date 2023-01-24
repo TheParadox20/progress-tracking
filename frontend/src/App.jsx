@@ -140,6 +140,19 @@ export default function App(){
           <button onClick={(e)=>{update(e);}}>Submit</button>
         </div>
       </div>
+      <button onClick={(e)=>{
+        fetch(baseURL+'/download/report.csv')
+        .then(response => response.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'report.csv';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+      });
+    }}>Download Report</button>
     </main>
   )
 }
