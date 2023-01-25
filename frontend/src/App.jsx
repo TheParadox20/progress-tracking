@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import './App.css'
 
-let baseURL ="https://web-production-6686b.up.railway.app"
+let baseURL ="http://narigp.eba-khafp6wv.us-east-1.elasticbeanstalk.com/"
 
 export default function App(){
   let [name,setName] = useState('Brian Muita');
